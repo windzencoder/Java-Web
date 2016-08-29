@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-24 15:32:16 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="entity.File" table="t_files">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="increment" />
+        </id>
+        <property name="user" type="java.lang.String">
+            <column name="user" />
+        </property>
+        <property name="file" type="java.lang.String">
+            <column name="file" />
+        </property>
+        <property name="path" type="java.lang.String">
+            <column name="path" />
+        </property>
+        <property name="size" type="long">
+            <column name="size" />
+        </property>
+        <property name="uploadTime" type="java.util.Date">
+            <column name="upload_time" />
+        </property>
+    </class>
+</hibernate-mapping>

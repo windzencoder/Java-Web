@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--  指定Struts 2配置文件的DTD信息  -->
+<!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.custom.i18n.resources" value="globalResource" />
+	<package name="netdisk" extends="json-default">	
+		<interceptors>
+			<interceptor name="authorization" class="interceptor.AuthorizationInterceptor" />
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="authorization">
+					<param name="ignoreActions">
+						validate_code,register.*,.*login.* 
+					</param> 
+				</interceptor-ref>
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="myStack" />	
+		<global-results>
+			<result name="success">/WEB-INF/jsp/result_json.jsp</result>
+			<result name="error">/WEB-INF/jsp/result_json.jsp</result>
+			<result name="login" type="redirectAction">login_page</result>
+		</global-results>
+		<action name="register" class="action.RegisterAction">
+			<result name="success">/WEB-INF/jsp/result.jsp</result>
+			<result name="input" >/WEB-INF/jsp/register.jsp</result>
+		</action>
+		<action name="login" class="action.LoginAction" >
+			<result name="success" type="redirect">main_page.action</result>
+			<result name="input">/WEB-INF/jsp/login.jsp</result>
+		</action>		
+		<action name="createDir" class="action.CreateDirAction">
+			<result name="success">/WEB-INF/jsp/create_dir_result.jsp</result>
+		</action>		
+		<action name="dir" class="action.DirAction">
+			<result name="success">/WEB-INF/jsp/dir_result.jsp</result>
+		</action>		
+		<action name="file" class="action.FileAction">
+			<result name="success">/WEB-INF/jsp/file_result.jsp</result>
+		</action>		
+		<action name="upload" class="action.UploadAction">
+			<result name="success">/WEB-INF/jsp/upload_success.jsp</result>
+		</action>		
+		<action name="downloadFile" class="action.DownloadFileAction"/>
+			
+		<action name="downloadMoreFile" class="action.DownloadMoreFileAction"/>
+
+		<action name="delete" class="action.DeleteAction"/>
+			
+		<action name="disk" class="action.DiskAction">
+			<result name="success">/WEB-INF/jsp/disk_result.jsp</result>
+		</action>		
+		<action name="relogin" class="action.ReloginAction">
+			<result name="success" type="redirectAction">login_page</result>
+		</action>		
+
+		<action name="validate_code"
+			class="action.ValidationCodeAction" />
+		<action name="*_page">
+			<result>/WEB-INF/jsp/{1}.jsp</result>
+		</action>
+	</package>
+</struts>

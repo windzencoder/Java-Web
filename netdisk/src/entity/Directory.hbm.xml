@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-24 15:26:01 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="entity.Directory" table="t_directories">
+    		<!-- 将id属性映射成自增型主键 -->
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="increment" />
+        </id>
+        <property name="user" type="java.lang.String">
+            <column name="user" />
+        </property>
+        <property name="path" type="java.lang.String">
+            <column name="path" />
+        </property>
+        <property name="parentPath" type="java.lang.String">
+            <column name="parent_path" />
+        </property>
+        <property name="dir" type="java.lang.String">
+            <column name="dir" />
+        </property>
+        <property name="createTime" type="java.util.Date">
+            <column name="create_time" />
+        </property>
+    </class>
+</hibernate-mapping>

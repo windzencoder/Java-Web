@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-24 15:40:23 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="entity.DirInfo">
+    		<!-- 将path属性映射成主键 -->
+        <id name="path" type="java.lang.String">
+            <column name="path" />
+            <generator class="assigned" />
+        </id>
+        <property name="user" type="java.lang.String">
+            <column name="user" />
+        </property>
+        <property name="parentPath" type="java.lang.String">
+            <column name="parent_path" />
+        </property>
+        <property name="dir" type="java.lang.String">
+            <column name="dir" />
+        </property>
+        <property name="createTime" type="java.util.Date">
+            <column name="create_time" />
+        </property>
+        <property name="count" type="int">
+            <column name="count" />
+        </property>
+        <property name="size" type="long">
+            <column name="size" />
+        </property>
+    </class>
+    
+    <!-- 定义调用存储过程的命名查询 -->
+    <sql-query name="myDirInfo" callable="true">
+   		<return alias="dirInfo" entity-name="entity.DirInfo">
+   			<return-property name="user">
+   				<return-column name="user"/>
+   			</return-property>
+   			<return-property name="path">
+   				<return-column name="path"/>
+   			</return-property>
+   			<return-property name="parentPath">
+   				<return-column name="parent_path"/>
+   			</return-property>
+   			<return-property name="dir">
+   				<return-column name="dir"/>
+   			</return-property>
+   			<return-property name="createTime">
+   				<return-column name="create_time"/>
+   			</return-property>
+   			<return-property name="count">
+   				<return-column name="count"/>
+   			</return-property>
+   			<return-property name="size">
+   				<return-column name="size"/>
+   			</return-property>
+   		</return>
+   		<!-- 调用p_dir_info -->
+   		{call p_dir_info(:user, :parentPath)}
+    </sql-query>
+    
+</hibernate-mapping>

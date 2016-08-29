@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+"http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+	<validator type="requiredstring" >
+		<param name="fieldName">user</param>
+		<message>用户名必须输入</message>
+	</validator>
+	<validator type="requiredstring">
+		<param name="fieldName">password</param>
+		<message>密码必须输入</message>
+	</validator>
+	<validator type="requiredstring">
+		<param name="fieldName">validationCode</param>
+		<message>验证码必须输入</message>
+	</validator>
+	<validator type="expression">
+		<!--  指定校验器表达式 -->
+		<param name="expression">repassword == password</param>
+		<!--  指定校验失败的错误提示信息  -->
+		<message>密码输入不一致</message>
+	</validator>   
+ 
+	<validator type="stringlength" >
+		<param name="fieldName">user</param>
+		<param name="minLength">4</param>
+		<param name="maxLength">20</param>
+		<param name="trim">true</param>
+		<message>用户名长度必须介于4和20之间!</message>
+	</validator>
+	<validator type="stringlength">
+		<param name="fieldName">password</param>
+		<param name="minLength">8</param>
+		<param name="maxLength">30</param>
+		<param name="trim">true</param>
+		<message>密码的长度必须介于8和30之间!</message>
+	</validator>
+
+	<validator type="regex">
+		<param name="fieldName">user</param>
+		<param name="expression"><![CDATA[(^\w*$)]]></param>
+		<param name="trim">true</param>
+		<message>用户名必须是字母和数字!</message>
+	</validator>
+  <!--  使用非字段校验器风格来配置email校验器，校验email属性  -->
+    <validator type="email">
+        <!--  指定需要校验的字段名  -->
+        <param name="fieldName">email</param>
+        <!--  指定校验浮点数失败的错误提示信息  -->
+        <message>电子邮件地址必须是一个有效的邮件地址！</message>
+    </validator>
+
+</validators>

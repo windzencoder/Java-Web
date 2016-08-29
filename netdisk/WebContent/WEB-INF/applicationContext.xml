@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<!-- 配置数据源 -->
+	<!-- 导入资源文件 -->
+	<!-- <context:property-placeholder location="classpath:db.properties" /> -->
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:db.properties</value>
+				<value>/WEB-INF/netdisk.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="user" value="${user}"></property>
+		<property name="password" value="${password}"></property>
+		<property name="jdbcUrl" value="${jdbcUrl}"></property>
+		<property name="driverClass" value="${driverClass}"></property>
+		<property name="initialPoolSize" value="${initPoolSize}"></property>
+		<property name="maxPoolSize" value="${maxPoolSize}"></property>
+	</bean>
+
+
+
+	<!-- 指定Hibernate的配置文件 -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<!-- 装配HibernateTemplate对象 -->
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<!-- 装配事务管理对象 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<!-- 装配事务拦截器 -->
+	<bean id="transactionInterceptor"
+		class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<property name="transactionManager" ref="transactionManager"></property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="get*">PROPAGATION_REQUIRED, readOnly</prop>
+				<prop key="getDirInfo">PROPAGATION_REQUIRED</prop>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+
+
+	<bean
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+			<list>
+				<value>userDAO</value>
+				<value>directoryDAO</value>
+				<value>fileDAO</value>
+			</list>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>transactionInterceptor</value>
+			</list>
+		</property>
+	</bean>
+
+
+
+	<bean id="userDAO" class="dao.UserDAOImpl">
+		<constructor-arg>
+			<ref bean="hibernateTemplate" />
+		</constructor-arg>
+	</bean>
+	<bean id="directoryDAO" class="dao.DirectoryDAOImpl">
+		<constructor-arg>
+			<ref bean="hibernateTemplate" />
+		</constructor-arg>
+	</bean>
+	<bean id="fileDAO" class="dao.FileDAOImpl">
+		<constructor-arg>
+			<ref bean="hibernateTemplate" />
+		</constructor-arg>
+	</bean>
+
+	<bean id="userService" class="service.UserServiceImpl">
+		<constructor-arg>
+			<ref bean="userDAO" />
+		</constructor-arg>
+	</bean>
+	<bean id="directoryService" class="service.DirectoryServiceImpl">
+		<constructor-arg>
+			<ref bean="directoryDAO" />
+		</constructor-arg>
+		<constructor-arg>
+			<ref bean="fileDAO" />
+		</constructor-arg>
+	</bean>
+	<bean id="fileService" class="service.FileServiceImpl">
+		<constructor-arg>
+			<ref bean="fileDAO" />
+		</constructor-arg>
+	</bean>
+	<bean id="serviceManager" class="service.ServiceManager">
+		<property name="userService">
+			<ref bean="userService" />
+		</property>
+		<property name="directoryService">
+			<ref bean="directoryService" />
+		</property>
+		<property name="fileService">
+			<ref bean="fileService" />
+		</property>
+	</bean>
+
+	<!-- 属性文件 -->
+<!-- 	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>/WEB-INF/netdisk.properties</value>
+		</property>
+	</bean> -->
+
+	<bean id="userInfo" class="common.UserInfo" scope="prototype">
+		<property name="root" value="${disk.root}" />
+	</bean>
+
+</beans>

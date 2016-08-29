@@ -1,0 +1,67 @@
+# 建立数据库disk
+CREATE DATABASE IF NOT EXISTS disk DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+# 删除表t_directories
+DROP TABLE IF EXISTS disk.t_directories;
+
+#  建立表t_directories
+CREATE TABLE IF NOT EXISTS disk.t_directories (
+  id int(11) NOT NULL auto_increment,
+  user varchar(20) NOT NULL,
+  path varchar(255) NOT NULL,
+  parent_path varchar(255) NOT NULL,
+  dir varchar(20) NOT NULL,
+  create_time datetime NOT NULL,
+  PRIMARY KEY  (id),
+  UNIQUE KEY user (user,path)
+)  ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+# 删除表t_files
+DROP TABLE IF EXISTS disk.t_files;
+
+# 删除表t_files
+CREATE TABLE IF NOT EXISTS disk.t_files (
+  id int(11) NOT NULL auto_increment,
+  user varchar(20) NOT NULL,
+  file varchar(255) NOT NULL,
+  path varchar(255) NOT NULL,
+  size bigint(11) NOT NULL,
+  upload_time datetime NOT NULL,
+  PRIMARY KEY  (id),
+  UNIQUE KEY file (file,path)
+)  ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+# 删除表t_users 
+DROP TABLE IF EXISTS disk.t_users;
+
+# 删除表t_users
+CREATE TABLE IF NOT EXISTS disk.t_users (
+  user varchar(20) NOT NULL,
+  password_md5 varchar(50) NOT NULL,
+  xm varchar(10) default NULL,
+  email varchar(20) default NULL,
+  phone varchar(20) default NULL,
+  qq varchar(12) default NULL,
+  PRIMARY KEY  (user)  
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+#  建立存储过程p_dir_info
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS disk.p_dir_info$$
+CREATE DEFINER=root@localhost PROCEDURE  disk.p_dir_info(in user varchar(20), in parent_path varchar(255))
+BEGIN
+select * from 
+(select d.user, d.path , d.parent_path, d.dir, d.create_time ,
+(case isnull(sum(f.count)) when true then 0 else sum(f.count) end) as count,
+(case isnull(sum(f.size)) when true then 0 else sum(f.size) end) as size
+from t_directories d left join 
+(select path, count(file) as count, sum(size) as size from t_files group by path)  f on instr(f.path, d.path) = 1 
+where d.user=user and d.parent_path=parent_path group by path) dir order by create_time;
+END $$
+
+DELIMITER ;
+
+
