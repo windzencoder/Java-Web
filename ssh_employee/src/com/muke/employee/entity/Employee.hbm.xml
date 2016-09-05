@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-31 9:48:13 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.muke.employee.entity.Employee" table="EMPLOYEE">
+        <id name="eid" type="java.lang.Integer">
+            <column name="EID" />
+            <generator class="native" />
+        </id>
+        <property name="name" type="java.lang.String" length="20">
+            <column name="NAME" />
+        </property>
+        <property name="sex" type="java.lang.String" length="10">
+            <column name="SEX" />
+        </property>
+        <property name="birthday" type="date">
+            <column name="BIRTHDAY" />
+        </property>
+        <property name="joinDate" type="date">
+            <column name="JOINDATE" />
+        </property>
+        <property name="eno" type="java.lang.String" length="20">
+            <column name="ENO" />
+        </property>
+        <property name="username" type="java.lang.String" length="20">
+            <column name="USERNAME" />
+        </property>
+        <property name="password" type="java.lang.String" length="20">
+            <column name="PASSWORD" />
+        </property>
+        
+        <!-- 配置关联关系映射 -->
+        <many-to-one name="department" class="com.muke.employee.entity.Department" fetch="join">
+        		<!-- 表示数据表中的外键名 默认是name属性的值 -->
+            <column name="dno" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

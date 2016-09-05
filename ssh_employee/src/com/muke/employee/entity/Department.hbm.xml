@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-31 9:48:13 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.muke.employee.entity.Department" table="DEPARTMENT">
+        <id name="did" type="java.lang.Integer">
+            <column name="DID" />
+            <generator class="native" />
+        </id>
+        <property name="dname" type="java.lang.String">
+            <column name="DNAME" />
+        </property>
+        <property name="ddesc" type="java.lang.String">
+            <column name="DDESC" />
+        </property>
+        
+        <!-- 关联关系映射配置 -->
+        <!-- 级联删除，删除部门的时候，对应删除员工 -->
+        <!-- inverse放弃一对多的外键维护能力 -->
+        <set name="employees" table="EMPLOYEE" inverse="true" lazy="true" cascade="delete">
+        		<!-- 集合属性中的元素中的外键 -->
+            <key>
+                <column name="dno" />
+            </key>
+            <one-to-many class="com.muke.employee.entity.Employee" />
+        </set>
+    </class>
+</hibernate-mapping>
