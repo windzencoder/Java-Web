@@ -31,11 +31,11 @@
 						<tr>
 							<td width="90" align="right">指令名称：</td>
 							<td>
-								<input name="command" type="text" class="allInput" value="" />
+								<input name="command" type="text" class="allInput" value="${command}" />
 							</td>
 							<td width="90" align="right">描述：</td>
 							<td>
-								<input name="description" type="text" class="allInput" value="" />
+								<input name="description" type="text" class="allInput" value="${description}" />
 							</td>
 							<td width="85" align="right">
 								<input type="submit"	class="tabSub" value="查 询" />
