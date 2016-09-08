@@ -16,4 +16,5 @@ public class ListService {
 		return new MessageDao().queryMessageList(command, description);
 	}
 	
+	
 }
