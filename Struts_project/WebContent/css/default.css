@@ -1,0 +1,86 @@
+BODY {
+	SCROLLBAR-FACE-COLOR: #ADD8E6;
+	SCROLLBAR-HIGHLIGHT-COLOR: #DBF4FB;
+	SCROLLBAR-SHADOW-COLOR: #DBF4FB;
+	SCROLLBAR-3DLIGHT-COLOR: #1262EF;
+	SCROLLBAR-ARROW-COLOR: #1045A5;
+	SCROLLBAR-TRACK-COLOR: #D7ECFF; 
+	scrollbar-darkshadow-color: #1262EF;
+	Scrollbar-darkshadow-color: #191970;
+	
+	FONT-FAMILY:"Tahoma,宋体";
+	Color: #444444; font-size: 9pt;
+
+	background-image: url(../image/bg_posting.jpg)/*url('../image/main/MainBG.gif');*/
+	background-repeat: repeat-y;
+	background-position: center;
+} 
+
+
+
+a:Link       { color: #444444; font-family: "Tahoma,宋体";  text-decoration: none;}
+a:visited    { color: black; font-family: "Tahoma,宋体"; text-decoration: none;}
+a:hover      { color: #A83FF9; font-family: "Tahoma,宋体";  text-decoration: underline;}
+a:active     { color: #A83FF9; font-family: "Tahoma,宋体";  text-decoration: none;}
+a            { color: #9933FF; text-decoration: none; }
+
+
+
+.ThumbBorder_Out_index	{ border-color: #3D7AE6;  border-style: solid;  border-width: 2; }
+.ThumbBorder_Out	{ border-color: #D41717;  border-style: solid;  border-width: 2; }
+.ThumbBorder_Over	{ border-color: #A83FF9;  border-style: solid;  border-width: 2; }
+
+.StarPhoto_Out		{ border-color: #FD6FBD;  border-style: solid;  border-width: 2; }
+.StarPhoto_Over		{ border-color: #A83FF9;  border-style: solid;  border-width: 2; }
+
+
+Table        {Color:#444444; font-family: "Tahoma,宋体"; font-size: 9pt; }
+
+
+Input        {color: #444444;font-family:"Tahoma,宋体";font-size: 9pt;font-style: normal; }
+
+.DisableText	{color: #3450AF; font-family: "Tahoma,宋体"; font-size: 9pt;}
+
+.Btn1_1	{ cursor:hand; background:url('image/main/Btn1_1.gif'); border:medium none; color:#243859; font-size: 9pt; width:68px; height:21px;} 
+.Btn1_2	{ cursor:hand; background:url('image/main/Btn1_2.gif'); border:medium none; color:#243859; font-size: 9pt; width:68px; height:21px;}
+.Btn1_3	{ cursor:hand; background:url('image/main/Btn1_3.gif'); border:medium none; color:#243859; font-size: 9pt; width:68px; height:21px;} 
+
+.Btn2_1	{ cursor:hand; background:url('image/main/Btn2_1.gif'); border:medium none; color:#243859; font-size: 9pt; width:85px; height:21px;} 
+.Btn2_2	{ cursor:hand; background:url('image/main/Btn2_2.gif'); border:medium none; color:#243859; font-size: 9pt; width:85px; height:21px;}
+
+
+.Input	{ background:url("image/main/InputBG.gif"); border: 1px solid #3478BC; font-family: "Tahoma,宋体"; font-size: 9pt;color:#243859; }
+.Input_Old	{ background-Color:white; border: 1px solid #3478BC; font-family: "Tahoma,宋体"; font-size: 9pt;color:#243859; }
+
+.Line_Over	{ background:url("image/main/line.gif"); }
+.Line_Out	{ background:url("images/icons/"); }
+
+
+.AlbumPage_Over		{ cursor:hand; background:url("image/main/AlbumPage_2.gif");}
+.AlbumPage_Out		{ cursor:hand; background:url("image/main/AlbumPage_1.gif");}
+
+.NumBG		{ background:url("flow/images/NumBG.jpg"); border:medium none; font-family: "Tahoma,宋体"; font-size: 14pt; color:#438CF5;width:28px; height:28px;}
+
+
+.PanelBG_1	{filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#B7D2FC, EndColorStr=white)}
+.PanelBG_2	{filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#E5F5F3, EndColorStr=white)}
+.PanelBG_3	{filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#E3FDEB, EndColorStr=white)}
+.PanelBG_4	{filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#E1FDEA, EndColorStr=white)}
+.PanelBG_5	{filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#FDF3E0, EndColorStr=white)}
+
+
+.titleBG1	{filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr=white, EndColorStr=#B7D0F2) alpha(opacity=)}
+.titleBG2	{filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=white, EndColorStr=#B7D0F2) alpha(opacity=)}
+
+.List	{ margin-left: 15}
+.Dialog	{ font-family:"Tahoma,宋体"; font-size: 11pt;}
+
+.TableDotted	{ border: 0px; background-image: url('images/PointLine.gif'); background-repeat: repeat-x; background-position-y: bottom;}
+.menuOver	{ cursor:hand; background-color: #EAF2FD; border: 0px solid; }
+
+
+.TitleText	{font-family:"宋体"; font-size: 11pt; FILTER: glow(color=white,strength=2) dropshadow(color=#B1AFAF,offx=1, offy=1, positive=2); font-size: 11pt; font-weight: bold;   }
+.title	 	{color: white; FILTER: glow(color=#A83FF9,strength=2) dropshadow(color=#A83FF9,offx=1, offy=1, positive=2); WIDTH:"";}
+
+.dropshadow { FILTER: dropshadow(color=#D3DAF6,offx=2,offy=2,positive=2);}
+.titleShadow { FILTER: shadow(color=black, direction=115, strength=6);}

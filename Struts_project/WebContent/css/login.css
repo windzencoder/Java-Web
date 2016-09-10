@@ -1,0 +1,87 @@
+
+body {
+	margin:0;
+	padding:0;
+	overflow:hidden;
+	background:url(../images/login_03.gif) repeat-x #152753;
+	font-size: 12px;
+	color: #adc9d9;
+}
+#top {
+	margin: 0 auto;
+	clear:both;
+	height:317px;
+	width:847px;
+	background:url(../images/login_04.jpg) no-repeat;
+}
+#center {
+	height:84px;
+	text-align:center;
+}
+
+#center_left {
+	
+	float:left;
+	background:url(../images/login_06.gif);
+	background-repeat:no-repeat;
+	background-positionX:rigth;
+	height:84px;
+	width:381px;
+	margin-left:10%;
+}
+#center_middle {
+	float:left;
+	
+	height:84px;
+	
+}
+#center_middle_right {
+	float:left;
+	background:url(../images/login_08.png) no-repeat;
+	height:84px;
+	width:13px;
+}
+
+#center_right {
+	float:left;
+	background:url(../images/login_10.gif) no-repeat;
+	height:84px;
+	width:211px;
+	
+	
+}
+
+
+#footer {
+	
+	margin:0 auto;
+	background:url(../images/login_11.gif) no-repeat;
+	height:206px;
+	width:847px;
+}
+
+INPUT {
+	width:90px;
+	height:17px;
+	background-color:#87adbf;
+	border:solid 1px #153966;
+	font-size:12px;
+	color:#283439;
+}
+
+#user {
+	margin-top: 20px;
+	font-size:12px;
+}
+.button{
+	margin:18px auto;
+	border:solid;
+}
+#id_log{
+	width:57px;
+	height:20px;
+}
+table{
+	border-spacing:0px;
+	
+}

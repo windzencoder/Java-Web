@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<constant name="struts.multipart.maxSize" value="1000701096" />
+	<package name="default" extends="struts-default">
+		<action name="firstpage" class="com.action.FirstPageAction">
+			<result name="success">/user/first.jsp</result>
+			<result name="firstpage">/admin/firstpage.jsp</result>
+			<result name="modifyfirstpage">/admin/editfirstpage.jsp</result>
+		</action>
+		<action name="userteacher" class="com.action.TeacherAction">
+			<result name="success">/user/teacher.jsp</result>
+			
+		</action>
+		<action name="adminteacher" class="com.action.TeacherAction">
+			<result name="success">/admin/teacher.jsp</result>
+			<result name="correct">/admin/correctteacher.jsp</result>
+			<interceptor-ref name="defaultStack">
+				<param name="fileUpload.maximumSize">500 000 000</param>
+			</interceptor-ref>
+		</action>
+		<action name="referbook" class="com.action.BookAction">
+			<result name="booklist">/admin/booklist.jsp</result>
+			<result name="gotoaddbook">/admin/addbook.jsp</result>
+			<result name="error">/admin/error.jsp</result>
+			<result name="gotomodifybook">/admin/modifybook.jsp</result>
+			<result name="userbooklist">/user/booklist.jsp</result>
+		</action>
+		<action name="userppt" class="com.action.PptAction">
+			<result name="pptlist">/user/pptlist.jsp</result>
+			<result name="success" type="stream">
+				<!-- 下载文件类型定义 -->
+				<!-- 下载文件处理方法 -->
+				<param name="contentDisposition">
+					attachment;filename="${filename}"
+                             </param>
+				<!-- 下载文件输出流定义 -->
+				<param name="inputName">downloadFile</param>
+				<param name="bufferSize">1024000</param>
+			</result>
+		</action>
+		<action name="adminppt" class="com.action.PptAction">
+			<result name="pptlist">/admin/pptlist.jsp</result>
+			<result name="addppt">/admin/addppt.jsp</result>
+			<result name="error">/admin/error.jsp</result>
+			<result name="success" type="stream">
+				<!-- 下载文件类型定义 -->
+				<!-- 下载文件处理方法 -->
+				<param name="contentDisposition">
+					attachment;filename="${filename}"
+                             </param>
+				<!-- 下载文件输出流定义 -->
+				<param name="inputName">downloadFile</param>
+				<param name="bufferSize">1024000</param>
+			</result>
+		</action>
+		<action name="log" class="com.action.UserAction">
+			<result name="success">/user/loginsuccess.jsp</result>
+			<result name="error">/user/loginerror.jsp</result>
+		</action>
+		
+		<!-- 后台用户登录 -->
+		<action name="admin" class="com.action.Login">
+			<result name="success">/admin/adminindex.jsp</result>
+			<result name="loginerror">/admin/loginerror.jsp</result>
+			<result name="exit">/admin/index.jsp</result>
+		</action>
+		
+		<action name="useraction" class="com.action.UserAction">
+			<result name="user">/admin/userlist.jsp</result>
+			<result name="toAddUser">/admin/adduser.jsp</result>
+		</action>
+	</package>
+</struts>    

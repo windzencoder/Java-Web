@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 映射fristpage表 -->
+    <class name="com.model.Firstpage" table="firstpage" catalog="se">
+    	<!--映射id属性 -->
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <!-- 映射description属性 -->
+        <property name="description" type="java.lang.String">
+            <column name="description" length="1000" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

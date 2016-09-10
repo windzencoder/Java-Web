@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 映射表teacher -->
+    <class name="com.model.Teacher" table="teacher" catalog="se">
+    	<!--映射id属性 -->
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <!-- 映射name属性 -->
+        <property name="name" type="java.lang.String">
+            <column name="name" length="45" />
+        </property>
+        <!-- 映射sex属性 -->
+        <property name="sex" type="java.lang.String">
+            <column name="sex" length="45" />
+        </property>
+         <!-- 映射degree属性 -->
+        <property name="degree" type="java.lang.String">
+            <column name="degree" length="45" />
+        </property>
+         <!-- 映射position属性 -->
+        <property name="position" type="java.lang.String">
+            <column name="position" length="45" />
+        </property>
+         <!-- 映射edubackground属性 -->
+        <property name="eduBackground" type="java.lang.String">
+            <column name="eduBackground" length="45" />
+        </property>
+         <!-- 映射college属性 -->
+        <property name="college" type="java.lang.String">
+            <column name="college" length="45" />
+        </property>
+         <!-- 映射address属性 -->
+        <property name="address" type="java.lang.String">
+            <column name="address" length="45" />
+        </property>
+         <!-- 映射direction属性 -->
+        <property name="direction" type="java.lang.String">
+            <column name="direction" length="45" />
+        </property>
+         <!-- 映射intro属性 -->
+        <property name="intro" type="java.lang.String">
+            <column name="intro" length="1000" />
+        </property>
+         <!-- 映射achievement属性 -->
+        <property name="achievement" type="java.lang.String">
+            <column name="achievement" length="2000" />
+        </property>
+         <!-- 映射photo属性 -->
+        <property name="photo" type="java.lang.String">
+            <column name="photo" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>

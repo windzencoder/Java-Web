@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+	
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password"></property>
+		<property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/se</property>
+		<!-- 方言 -->
+		<property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+
+		<!-- 映射文件 -->
+		<mapping resource="com/model/Admin.hbm.xml" />
+		<mapping resource="com/model/Book.hbm.xml" />
+		<mapping resource="com/model/Firstpage.hbm.xml" />
+		<mapping resource="com/model/Ppt.hbm.xml" />
+		<mapping resource="com/model/Teacher.hbm.xml" />
+		<mapping resource="com/model/User.hbm.xml" />
+		
+	</session-factory>
+</hibernate-configuration>
