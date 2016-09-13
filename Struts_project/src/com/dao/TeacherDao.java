@@ -10,7 +10,12 @@ import org.hibernate.criterion.Order;
 import com.model.HibernateSessionFactory;
 import com.model.Teacher;
 
+/*
+ * æ•™å¸ˆç®¡ç†Dao
+ */
 public class TeacherDao {
+	
+	//è·å–æ•™å¸ˆä¿¡æ¯
 	public static Teacher getTeacher()
 	{
 		Session session = HibernateSessionFactory.getSession();
@@ -26,9 +31,8 @@ public class TeacherDao {
 			else {
 				Teacher teacher=new Teacher();
 				session.save(teacher);
-				session.clear();
 				teacher=(Teacher)session.get(Teacher.class, 1);
-				
+				session.clear();
 				return teacher;
 			}
 		} catch (Exception e) {
@@ -41,7 +45,7 @@ public class TeacherDao {
 
 		
 	}
-	static public void InsertTeacher(Teacher teacher) {// Ìí¼Ó½ÌÊ¦
+	static public void InsertTeacher(Teacher teacher) {// ï¿½ï¿½Ó½ï¿½Ê¦
 		Session session = HibernateSessionFactory.getSession();
 		try {
 			session.beginTransaction();
@@ -57,7 +61,7 @@ public class TeacherDao {
 			session.close();
 		}
 	}
-//	public static  Teacher GetTeacherList() { // »ñµÃ½ÌÊ¦ÁĞ±íÇé¿ö
+//	public static  Teacher GetTeacherList() { // ï¿½ï¿½Ã½ï¿½Ê¦ï¿½Ğ±ï¿½ï¿½ï¿½ï¿½
 //		// TODO Auto-generated method stub
 //		Session session = HibernateSessionFactory.getSession();
 //		List<Teacher> list = new ArrayList<Teacher>();

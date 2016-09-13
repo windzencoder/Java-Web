@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -91,12 +91,10 @@ body {
 				</td>
 				<td bgcolor="#ffffff">
 					<div class="style5">
-						<s:form action="adminppt.action"
-							enctype="multipart/form-data" method="post">
+						<!-- 上传ppt -->
+						<s:form action="adminppt.action" enctype="multipart/form-data" method="post">
 							<s:file name="ppt" label="选择文件" />
-							<s:submit value="上传" 
-								method="savePpt" />
-							
+							<s:submit value="上传"  method="savePpt" />
 						</s:form>
 					</div>
 				</td>

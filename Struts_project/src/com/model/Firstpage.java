@@ -1,17 +1,18 @@
 package com.model;
 
 public class Firstpage implements java.io.Serializable {
-	//id属性
+	//id棣栭〉id
 	private Integer id;
-	//description属性
+	//description棣栭〉鎻忚堪
 	private String description;
-	/** 默认构造函数 */
+	
 	public Firstpage() {
 	}
-	/** 构造函数 */
+	
 	public Firstpage(String description) {
 		this.description = description;
 	}
+	
 	public Integer getId() {
 		return this.id;
 	}

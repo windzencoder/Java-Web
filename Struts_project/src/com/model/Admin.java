@@ -1,15 +1,19 @@
 package com.model;
+
+/*
+ * ç®¡ç†å‘˜
+ */
 public class Admin implements java.io.Serializable {
-	//Ó³Éäid
+	//ç®¡ç†å‘˜ç¼–å·
 	private Integer id;
-	//¹ÜÀíÔ±name
+	//ç®¡ç†å‘˜ç”¨æˆ·å
 	private String name;
-	//¹ÜÀíÔ±ÃÜÂë
+	//ç®¡ç†å‘˜å¯†ç 
 	private String pwd;
-	/** Ä¬ÈÏ¹¹Ôìº¯Êı */
+	
 	public Admin() {
 	}
-	/** ¹¹Ôìº¯Êı */
+	
 	public Admin(String name, String pwd) {
 		this.name = name;
 		this.pwd = pwd;

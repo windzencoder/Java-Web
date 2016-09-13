@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'top.jsp' starting page</title>
+    <title>教师介绍</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -83,6 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	   			</table>
   	   		
   	   		</td>
+  	   		<!-- 图片  -->
   	   		<td valign="top">
   	   			<img src="<s:property value='#teacher.photo'/>" width="180px" height="180px">
   	   		</td>

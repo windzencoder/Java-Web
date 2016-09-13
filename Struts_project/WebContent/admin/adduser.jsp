@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'itemlist.jsp' starting page</title>
+    <title>添加用户</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -62,26 +62,27 @@ a            { color:#0000ff; text-decoration: none; }
     </style>
     <script type="text/javascript">
     
+    /* 输入验证 */
     	function check(){
-    		var num=document.getElementById("num");
-    		if(num=="")
+    		var num=document.getElementById("num").value;
+    		if(num == "" || num == null)
     		{
     			alert("学号不能为空！");
     			return false;
     		}
-    		var name=document.getElementById("name");
-    		if(name=="")
+    		var name=document.getElementById("name").value;
+    		if(name =="" || name == null)
     		{
     			alert("姓名不能为空！");
     			return false;
     		}
-    		var pwd=document.getElementById("pwd");
-    		if(num=="")
+    		var pwd=document.getElementById("pwd").value;
+    		if(pwd  =="" || pwd == null)
     		{
     			alert("密码不能为空！");
     			return false;
     		}
-    		var repwd=document.getElementById("repwd");
+    		var repwd=document.getElementById("repwd").value;
     		if(repwd!=pwd)
     		{
     			alert("两次密码不一样！");
@@ -118,7 +119,9 @@ a            { color:#0000ff; text-decoration: none; }
            
           <tr>
           		<td>
+          			<!-- 对应的action -->
           			<s:form action="useraction" theme="simple">
+          			
 					<table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#a8c7ce">
 					<tr height="50px">
 						<td bgcolor="#ffffff" align="center" width="60px">
@@ -126,7 +129,7 @@ a            { color:#0000ff; text-decoration: none; }
 						</td >
 						<td bgcolor="#ffffff"  width="60px">
 							<div class="style2">
-								<s:textfield name="num" theme="simple"></s:textfield>
+								<s:textfield id="num" name="num" theme="simple"></s:textfield>
 							</div>
 						</td >
 					</tr>
@@ -136,7 +139,7 @@ a            { color:#0000ff; text-decoration: none; }
 						</td >
 						<td bgcolor="#ffffff"  width="150px">
 							<div class="style2">
-								<s:textfield name="name" theme="simple"></s:textfield>
+								<s:textfield id="name" name="name" theme="simple"></s:textfield>
 							</div>
 						</td >
 					</tr>
@@ -146,7 +149,7 @@ a            { color:#0000ff; text-decoration: none; }
 						</td>
  						<td bgcolor="#ffffff" width="200px">			
 							 <div class="style2">
-								<s:password name="pwd" theme="simple"></s:password>
+								<s:password id="pwd" name="pwd" theme="simple"></s:password>
 							 </div>
 						</td>
 					</tr>
@@ -156,13 +159,15 @@ a            { color:#0000ff; text-decoration: none; }
 						</td>
 						<td bgcolor="#ffffff" width="200px">			
 							 <div class="style2">
-								<s:password name="repwd" theme="simple"></s:password>
+								<s:password id="repwd" name="repwd" theme="simple"></s:password>
 							 </div>
 						</td>
 					</tr>
 					<tr height="50px">
 						<td colspan="2" bgcolor="#ffffff" align="center">
 							<div class="style2">
+							
+							<!-- action对应的方法 -->
 							 <s:submit value="提交" method="addUser" theme="simple" onclick="return check();"></s:submit>
 							 </div>
 						</td>

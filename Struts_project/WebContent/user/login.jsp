@@ -48,6 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										
 										<br>
 										<br>
+										<!-- 异步提交 -->
 										<sx:submit value="登录" method="login" targets="login" ></sx:submit>
 										&nbsp;&nbsp;
 										<INPUT type=reset value=取消 name=Submit>

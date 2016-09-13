@@ -1,17 +1,17 @@
 package com.model;
 public class User implements java.io.Serializable {
-	//idÊôĞÔ
+	//idç¼–å·
 	private Integer id;
-	//numÊôĞÔ
+	//numå­¦å·
 	private String num;
-	//passwordÊôĞÔ
+	//passwordç”¨æˆ·å
 	private String password;
-	//nameÊôĞÔ
+	//nameå¯†ç 
 	private String name;
-	/**Ä¬ÈÏ¹¹Ôìº¯Êı*/
+	
 	public User() {
 	}
-	/**¹¹Ôìº¯Êı */
+	
 	public User(String num, String password, String name) {
 		this.num = num;
 		this.password = password;

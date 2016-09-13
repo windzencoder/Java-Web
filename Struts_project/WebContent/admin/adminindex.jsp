@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>软件工程后台管理</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -18,9 +18,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	
+	<!-- 这里是框架 -->
+	
    <frameset rows="64,*"  frameborder="no">
-			<frame src="admin/top.jsp" name="usertopFrame"  frameborder="0" scrolling="no"/>
+   
+   			<!-- 顶部页面 -->
+			<frame src="<%=basePath %>/admin/top.jsp" name="usertopFrame"  frameborder="0" scrolling="no"/>
        
+       		<!-- 下面的页面，分成两个部门 -->
 		    <frame src="admin/center.jsp" name="usercenterFrame"  frameborder="0"/>
 		  
   </frameset>

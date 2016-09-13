@@ -12,7 +12,7 @@
 	<head>
 		<base href="<%=basePath%>">
 
-		<title>My JSP 'editad.jsp' starting page</title>
+		<title>编辑首页</title>
 
 		<meta http-equiv="pragma" content="no-cache">
 		<meta http-equiv="cache-control" content="no-cache">
@@ -67,6 +67,25 @@ body {
 	width: 200px;
 }
 </style>
+
+<!-- js时间 -->
+<script type="text/javascript">
+	
+	function check() {
+		var textarea = document.getElementById("txtarea");
+		if(textarea.value == "" || textarea.value == null){
+			alert("请输入首页内容");
+			return false;
+		}
+		return true;
+	}
+	
+	window.onload = function() {
+		
+	}
+
+</script>
+
 	</head>
 
 	<body>
@@ -122,15 +141,14 @@ body {
 								<td bgcolor="#ffffff" colspan="2">
 									<input type="hidden" value="${requestScope.firstpage.id}"
 										name="id" />
+									<!-- 隐藏的id -->
 									<input type="hidden" value="1" name="pagecode" />
 									<div align="center" class="style3">
 
-
-										<s:submit type="image" src="images/admin/submit.png"
-											onclick="return check();" id="sub" method="saveFirstpage"
-											theme="simple" />
-										<a href="javascript:history.go(-1);"> <img
-												src="images/tupian/houtui.png" /> </a>
+									<!-- 提交 -->
+									<s:submit type="image" src="images/admin/submit.png" onclick="return check();" id="sub" method="saveFirstpage" theme="simple" />
+									<!-- 后退 -->
+									<a href="javascript:history.go(-1);"><img src="images/tupian/houtui.png" /></a>
 									</div>
 								</td>
 

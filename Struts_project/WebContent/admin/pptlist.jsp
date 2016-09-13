@@ -12,7 +12,7 @@
 	<head>
 		<base href="<%=basePath%>">
 
-		<title>My JSP 'itemlist.jsp' starting page</title>
+		<title>ppt列表页面</title>
 
 		<meta http-equiv="pragma" content="no-cache">
 		<meta http-equiv="cache-control" content="no-cache">
@@ -93,7 +93,6 @@ body {
 									<div class="style2">
 										添加新课件
 									</div>
-									
 								</s:a>
 							</td>
 						</tr>
@@ -125,10 +124,10 @@ body {
 							</td>
 						</tr>
 						<%
-							
 							int num = 1;
 						%>
-
+						
+						<!-- 循环 -->
 						<s:iterator var="ppt" value="#lst">
 							<tr>
 								<td bgcolor="#ffffff" align="center">
@@ -144,26 +143,28 @@ body {
 										<s:property value="#ppt.date"></s:property>
 									</div>
 								</td>
+								
+								<!-- 下载 -->
 								<td bgcolor="#ffffff" align="center">
 									<div class="style3">
 										<s:a action="adminppt" method="pptDownload">下载
-										<s:param name="id">
-										<s:property value="#ppt.id"/></s:param>
-										
+											<s:param name="id">
+												<s:property value="#ppt.id"/>
+											</s:param>
 										</s:a>
 									</div>
 								</td>
+								<!-- 删除 -->
 								<td bgcolor="#ffffff" align="center">
 									<div class="style3">
-										<s:a action="adminppt" method="delPpt">
-											删除
+										<s:a action="adminppt" method="delPpt">删除
 											<s:param name="pptid">
 												<s:property value="#ppt.id"/>
 											</s:param>
-										
 										</s:a>
 									</div>
 								</td>
+								
 							</tr>
 						</s:iterator>
 					</table>

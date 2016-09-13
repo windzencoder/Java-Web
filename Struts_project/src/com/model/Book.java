@@ -1,20 +1,21 @@
 package com.model;
 
-
-
+/*
+ * å‚è€ƒä¹¦ç±å®ä½“
+ */
 public class Book implements java.io.Serializable {
-	//idÊôĞÔ
+	//idç¼–å·
 	private Integer id;
-	//nameÊôĞÔ
+	//nameå‚è€ƒä¹¦ç±åç§°
 	private String name;
-	//pathÊôĞÔ
+	//pathä¹¦ç±å›¾ç‰‡è·¯å¾„
 	private String path;
-	//descriptionÊôĞÔ
+	//descriptionæè¿°
 	private String description;
-	/**Ä¬ÈÏ¹¹Ôìº¯Êı*/
+	
 	public Book() {
 	}
-	/** ¹¹Ôìº¯Êı*/
+	
 	public Book(String name, String path, String description) {
 		this.name = name;
 		this.path = path;

@@ -12,7 +12,7 @@
 	<head>
 		<base href="<%=basePath%>">
 
-		<title>My JSP 'itemlist.jsp' starting page</title>
+		<title>教师管理</title>
 
 		<meta http-equiv="pragma" content="no-cache">
 		<meta http-equiv="cache-control" content="no-cache">
@@ -91,6 +91,7 @@ body {
 							</td>
 							<td bgcolor="#ffffff" align="left">
 								<div class="style2">
+									<!-- 获取教师姓名 -->
 									<s:property value="#teacher.name"></s:property>
 								</div>
 							</td>
@@ -219,12 +220,11 @@ body {
 						<tr>
 							<td colspan="2" bgcolor="#ffffff">
 								<div align="center" class="style3">
-									<a href="javascript:history.go(-1);"><img
-											src="images/tupian/houtui.png" />
-									</a>
-									<s:a action="adminteacher" method="correct">
-										<img src="images/tupian/xiugai.jpg" />
-										<s:param name="teacherid" value="{#teacher.id}"/>
+									<!-- 后退 -->
+									<a href="javascript:history.go(-1);"><img src="images/tupian/houtui.png" /> </a>
+									<!-- 修改 -->
+									<s:a action="adminteacher" method="correct"> <img src="images/tupian/xiugai.jpg" />
+										<s:param name="teacherid" value="#teacher.id"/>
 									</s:a>
 								</div>
 							</td>

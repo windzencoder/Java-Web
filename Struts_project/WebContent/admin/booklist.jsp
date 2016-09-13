@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'itemlist.jsp' starting page</title>
+    <title>参考书籍列表</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -84,6 +84,7 @@ a            { color:#0000ff; text-decoration: none; }
 					<tr height="50px">
 						<td colspan="5" align="right">
 							<div style="margin-right: 20px;">
+								<!-- 添加书籍 -->
 								<s:a action="referbook" method="gotoAddBook">
 									<button style="width:60px;height:30px;">添加</button>
 								</s:a>

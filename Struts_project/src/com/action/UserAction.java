@@ -13,7 +13,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 /*
- * 
+ * 用户管理
  */
 public class UserAction extends ActionSupport{
 	private static final long serialVersionUID = 1L;
@@ -21,65 +21,86 @@ public class UserAction extends ActionSupport{
 	public String execute() throws Exception {
 		return SUCCESS;
 	}
+	
+	/*
+	 * 登录方法
+	 */
 	public String login() throws Exception{
-		//�õ�context
 		ActionContext context=ActionContext.getContext();
 		HttpServletRequest request=ServletActionContext.getRequest();
-		//ȡ�õ�¼ѧ��
 		String no=request.getParameter("no");
-		//��¼����
 		String pwd=request.getParameter("pwd");
-		//�Ƿ�Ϊ��
 		if(no.isEmpty()||pwd.isEmpty())
 		{
-			return ERROR;
+			return ERROR;// /user/loginerror.jsp
 		}else {
-			//�������ݿ�
 			User  user=UserDao.isLogin(no, pwd);
 			if(user==null)
 			{
 				return ERROR;
 			}else {
 				
-				return SUCCESS;
+				//保存到页面
+				context.put("user", user);
+				
+				return SUCCESS; // /user/loginsuccess.jsp
 			}			
 		}		
 	}
+	
+	/*
+	 * 删除用户
+	 */
 	public String delUser()throws Exception{
 		ActionContext context=ActionContext.getContext();
 		HttpServletRequest request=ServletActionContext.getRequest();
 		String id=request.getParameter("id");
+		//删除用户
 		UserDao.deleteUser(Integer.parseInt(id));
+		
 		List<User> userList=UserDao.getUserList();
 		context.put("userlist", userList);
 		
 		return "user";
 		
 	}
+	
+	
+	/*
+	 * 添加用户 跳转的页面
+	 */
 	public String toAddUser()throws Exception{
 		return "toAddUser";
 	}
+	
+	/*
+	 * 添加用户 操作
+	 */
 	public String addUser()throws Exception{
 		ActionContext context=ActionContext.getContext();
 		HttpServletRequest request=ServletActionContext.getRequest();
 		String num=request.getParameter("num");
 		String name=request.getParameter("name");
 		String pwd=request.getParameter("pwd");
+		//添加用户
 		UserDao.addUser(num, name, pwd);
+		//获取用户的列表
 		List<User> userList=UserDao.getUserList();
 		context.put("userlist", userList);
 		
 		
 		return "user";
 	}
+	
+	/*
+	 * 展示用户列表
+	 */
 	public String showUserList()throws Exception{
 		ActionContext context=ActionContext.getContext();
-	
 		List<User> userList=UserDao.getUserList();
+		//放入的是在request的
 		context.put("userlist", userList);
-		
-		
-		return "user";
+		return "user";//返回的是/admin/userlist.jsp页面
 	}
 
 }

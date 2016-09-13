@@ -27,7 +27,7 @@ public class AdminDao {
 			List<Admin> admins=criteria.list();
 			
 			session.close();
-			if(admins.isEmpty())
+			if(admins.isEmpty())//是否为空
 			{
 				return false;
 			}else {

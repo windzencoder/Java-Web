@@ -7,7 +7,9 @@
 	
 		<property name="hibernate.connection.username">root</property>
 		<property name="hibernate.connection.password"></property>
-		<property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/se</property>
+		<property name="hibernate.connection.url">
+			<![CDATA[jdbc:mysql://127.0.0.1:3306/se?useUnicode=true&characterEncoding=UTF-8]]>
+		</property>
 		<!-- 方言 -->
 		<property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
@@ -15,6 +17,8 @@
 		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
+		
+		
 
 		<!-- 映射文件 -->
 		<mapping resource="com/model/Admin.hbm.xml" />

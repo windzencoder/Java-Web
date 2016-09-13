@@ -29,6 +29,7 @@ body {
   </head>
   
   <body>
+  		<!-- 使用的table -->
 		<table width="100%" height="100%" border="0" cellspacing="0"
 			cellpadding="0">
 			<tr>
@@ -36,6 +37,7 @@ body {
 					&nbsp;
 				</td>
 				<td width="147" valign="top">
+					<!-- 使用了iframe  左侧-->
 					<iframe height="100%" width="100%" frameborder="0" src="admin/left.jsp"
 						name="leftFrame" id="leftFrame" title="leftFrame"></iframe>
 				</td>
@@ -43,6 +45,7 @@ body {
 					&nbsp;
 				</td>
 				<td valign="top">
+					<!-- 右侧 -->
 					<iframe height="100%" width="100%" frameborder="0" src="admin/welcome.jsp"
 						name="rightFrame" id="rightFrame" title="rightFrame"></iframe>
 				</td>

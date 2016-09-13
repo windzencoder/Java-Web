@@ -13,9 +13,13 @@ import com.model.Book;
 import com.model.HibernateSessionFactory;
 import com.model.Ppt;
 
+/*
+ * 课件dao
+ */
 public class PptDao {
+	
+	//获取ppt列表
 	public static List<Ppt> GetPptList() {
-		// TODO Auto-generated method stu
 		
 		Session session = HibernateSessionFactory.getSession();
 		List<Ppt> list = new ArrayList<Ppt>();
@@ -24,7 +28,6 @@ public class PptDao {
 		
 			Criteria criteria = session.createCriteria(Ppt.class);
 			criteria.addOrder(Order.asc("id"));
-
 			
 			list = (List<Ppt>) criteria.list();
 			session.getTransaction().commit();
@@ -63,8 +66,11 @@ public class PptDao {
 		}
 		return 0;
 	}
+	
+	/*
+	 * 获取ppt 通过id
+	 */
 	public static Ppt GetPpt(int uid) {
-		// TODO Auto-generated method stub
 		
 		Session session = HibernateSessionFactory.getSession();
 		
@@ -84,6 +90,10 @@ public class PptDao {
 		}
 		return null;
 	}
+	
+	/*
+	 * 删除ppt
+	 */
 	public static Ppt deletePpt(int uid) {
 		// TODO Auto-generated method stub
 		
@@ -106,8 +116,9 @@ public class PptDao {
 		}
 		return null;
 	}
+	
+	//保存ppt
 	public static void  savePpt(String filename, String path) {
-		// TODO Auto-generated method stub
 		
 		Session session = HibernateSessionFactory.getSession();
 		Ppt ppt=new Ppt();

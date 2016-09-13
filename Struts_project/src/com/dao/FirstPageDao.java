@@ -9,7 +9,12 @@ import org.hibernate.criterion.Restrictions;
 import com.model.Firstpage;
 import com.model.HibernateSessionFactory;
 
+/*
+ * 棣栭〉绠＄悊Dao
+ */
 public class FirstPageDao {
+	
+	//鑾峰彇棣栭〉璇剧▼鎻忚堪
 	public static String getFirstPageContent()
 	{
 		Session session = HibernateSessionFactory.getSession();
@@ -30,7 +35,11 @@ public class FirstPageDao {
 		}
 		return content;
 	}
-	static public Firstpage getFirstpageById(int id) {// 获得首页资料
+	
+	/*
+	 * 閫氳繃id鑾峰彇棣栭〉
+	 */
+	static public Firstpage getFirstpageById(int id) {
 		Session session = HibernateSessionFactory.getSession();
 		Firstpage firstpage = new Firstpage();
 		try {
@@ -41,7 +50,7 @@ public class FirstPageDao {
 			if (!list.isEmpty())
 				firstpage = (Firstpage) list.get(0);
 			else{
-				firstpage.setDescription("请输入要修改的主页文本内容！");
+				firstpage.setDescription("娌℃湁棣栭〉");
 				session.save(firstpage);
 			}
 			session.getTransaction().commit();
@@ -54,6 +63,7 @@ public class FirstPageDao {
 		}
 		return firstpage;
 	}
+	
 	public static void updateFirstPage(Firstpage firstpage)
 	{
 		Session session = HibernateSessionFactory.getSession();

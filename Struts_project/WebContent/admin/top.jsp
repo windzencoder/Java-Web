@@ -8,6 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
+  	<!-- 基本路径 -->
     <base href="<%=basePath%>">
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -51,7 +52,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												
 													<td>
 														<div align="right">
-														<!-- 退出 -->
+															<!-- 退出 使用的是动态调用 -->
+															<!-- 这里的target很关键，否则会在当期的页面显示登录页面 -->
 															<s:a action="admin" method="exit" target="_parent">
 															<img src="images/quit.gif" alt=" " width="69" height="17" />
 															</s:a>
@@ -68,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 				</td>
 			</tr>
-<!-- 下一行 -->
+	<!-- 下一行 -->
 			<tr>
 				<td height="40" background="images/main_10.gif">
 			 

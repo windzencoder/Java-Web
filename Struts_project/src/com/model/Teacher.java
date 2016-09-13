@@ -1,34 +1,37 @@
 package com.model;
 
+/*
+ * æ•™å¸ˆå®ä½“ç±»
+ */
 public class Teacher implements java.io.Serializable {
-	//idÊôĞÔ
+	//id
 	private Integer id;
-	//nameÊôĞÔ
+	//name
 	private String name;
-	//sexÊôĞÔ
+	//sex
 	private String sex;
-	//degreeÊôĞÔ
+	//degreeå­¦ä½
 	private String degree;
-	//positionÊôĞÔ
+	//positionèŒä½
 	private String position;
-	//eduBackgroundÊôĞÔ
+	//eduBackgroundæ•™è‚²èƒŒæ™¯
 	private String eduBackground;
-	//collegeÊôĞÔ
+	//collegeå­¦é™¢
 	private String college;
-	//addressÊôĞÔ
+	//addressåœ°å€
 	private String address;
-	//directionÊôĞÔ
+	//directionç ”ç©¶æ–¹å‘
 	private String direction;
-	//introÊôĞÔ
+	//introç®€ä»‹
 	private String intro;
-	//achievementÊôĞÔ
+	//achievementå­¦é™¢æˆå°±
 	private String achievement;
-	//photoÊôĞÔ
+	//photoç…§ç‰‡å­˜æ”¾è·¯å¾„
 	private String photo;
-	/**Ä¬ÈÏ¹¹Ôìº¯Êı */
+	
 	public Teacher() {
 	}
-	/** ¹¹Ôìº¯Êı */
+	
 	public Teacher(String name, String sex, String degree, String position,
 			String eduBackground, String college, String address,
 			String direction, String intro, String achievement, String photo) {

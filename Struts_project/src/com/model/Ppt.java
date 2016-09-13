@@ -2,18 +2,18 @@ package com.model;
 
 
 public class Ppt implements java.io.Serializable {
-	//id属性
+	//id缂栧彿
 	private Integer id;
-	//path属性
+	//path ppt鏂囦欢璺緞
 	private String path;
-	//name属性
+	//name ppt鏂囦欢鍚嶇О
 	private String name;
-	//date属性
+	//date 涓婁紶鏃堕棿
 	private String date;
-	/** 默认构造函数 */
+	
 	public Ppt() {
 	}
-	/** 构造函数 */
+	
 	public Ppt(String path, String name, String date) {
 		this.path = path;
 		this.name = name;

@@ -12,10 +12,17 @@ import com.model.Teacher;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
+/*
+ * 教师Action
+ */
 public class TeacherAction extends ActionSupport{
+	
 	private static final long serialVersionUID = 1L;
-	private File uploadPhoto; // �û��ϴ�����Ƭ�ļ�
-	private String uploadPhotoFileName; // �ϴ��ļ����ļ���
+	/*
+	 * 文件上传相关
+	 */
+	private File uploadPhoto; // 用户上传的照片文件
+	private String uploadPhotoFileName; // 上传文件的文件名
 
 	
 
@@ -34,6 +41,8 @@ public class TeacherAction extends ActionSupport{
 	public void setUploadPhotoFileName(String uploadPhotoFileName) {
 		this.uploadPhotoFileName = uploadPhotoFileName;
 	}
+	
+	//修改教师
 	public String correctTeacher() throws Exception {
 		HttpServletRequest request = ServletActionContext.getRequest();
 	
@@ -46,26 +55,23 @@ public class TeacherAction extends ActionSupport{
 		String address = request.getParameter("address");
 		String direction = request.getParameter("direction");
 		String intro = request.getParameter("intro");
-		String achievement = request.getParameter("achievement");
+		String achievement = request.getParameter("achievement");//学术成就
 		
-//		
-//		
-//		upLoadPhoto();
-		
-		if (uploadPhoto == null)
+		if (uploadPhoto == null){
 			return "error";
-		//picFileName=new Date().toLocaleString();
+		}
+		
+		//上传的路径
 		String serverRealPath = ServletActionContext.getServletContext()
-				.getRealPath("/upload/teacher") + "\\" + uploadPhotoFileName;
+				.getRealPath("/upload/teacher") + "/" + uploadPhotoFileName;
+		System.out.println("serverRealPath:"+serverRealPath);
 		File picFile = new File(serverRealPath);
 		FileUtils.copyFile(uploadPhoto, picFile);
 		
 		
 		
 		String path = "upload/teacher/" + uploadPhotoFileName;
-		
-		//String path = new String("d:\\upload\\photo" + uploadPhoto);
-		
+		//获取的教师
 		Teacher teacher = TeacherDao.getTeacher();
 		teacher.setAchievement(achievement);
 		teacher.setAddress(address);
@@ -73,16 +79,16 @@ public class TeacherAction extends ActionSupport{
 		teacher.setDegree(degree);
 		teacher.setDirection(direction);
 		teacher.setEduBackground(eduBackground);
-
 		teacher.setIntro(intro);
 		teacher.setName(name);
 		teacher.setPosition(position);
 		teacher.setSex(sex);
-		teacher.setPhoto(path);
+		teacher.setPhoto(path);//图片的路径
 		
 		
 		
 		ActionContext actioncontext = ActionContext.getContext();
+		//保存教师
 		TeacherDao.InsertTeacher(teacher);
 		
 		ActionContext context=ActionContext.getContext();
@@ -96,14 +102,21 @@ public class TeacherAction extends ActionSupport{
 		
 		return SUCCESS;
 	}
+	
+	/*
+	 * 获取教师信息 /admin/teacher.jsp页面
+	 */
 	public String getTeacher() throws Exception {
 		ActionContext context=ActionContext.getContext();
 		Teacher teacher=TeacherDao.getTeacher();
 		context.put("teacher", teacher);
 		return SUCCESS;
 	}
+	
+	/*
+	 * 跳转到修改页面
+	 */
 	public String correct() throws Exception {
-		
 		return "correct";
 	}
 }

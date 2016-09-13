@@ -6,6 +6,7 @@
     <class name="com.model.Admin" table="admin" catalog="se">
     	<!-- 映射id字段 -->
         <id name="id" type="java.lang.Integer">
+        		<!-- 采用底层数据库本身提供的主键生成机制 -->
             <column name="id" />
             <generator class="identity" />
         </id>

@@ -10,7 +10,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 	<head>
-		<script type="text/javascript" src="./js/uploadDialog.js"></script>
+		
 
 		<base href="<%=basePath%>">
 		<meta http-equiv="pragma" content="no-cache">
@@ -18,6 +18,8 @@
 		<meta http-equiv="expires" content="0">
 		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 		<meta http-equiv="description" content="This is my page">
+		<!-- js 缺了 -->
+		<script type="text/javascript" src="./js/uploadDialog.js"></script>
 		<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
@@ -79,6 +81,7 @@ body {
 			</td>
 		</tr>
 
+		<!-- 修改首页modifyfirstpage -->
 		<tr>
 			<td>
 				<table width="100%" border="0" cellpadding="0" cellspacing="1"
@@ -90,6 +93,7 @@ body {
 							<div class="style3">
 								<s:a action="firstpage" method="modifyfirstpage">
 									修改主页文本内容
+									<!-- id -->
 									<s:param name="id">1</s:param>
 								</s:a>
 								
@@ -102,15 +106,15 @@ body {
 								内容
 							</div>
 						</td>
-					
 					</tr>
-						<tr>
+					<!-- 显示首页类容 -->
+					<tr>
 							<td bgcolor="#ffffff" align="left" rowspan="10" valign="top" colspan="3">
 								<div class="style3">
 									<s:property value="#firstpage.description"></s:property>
 								</div>
 							</td>
-							</tr>
+					</tr>
 						
 				</table>
 			</td>

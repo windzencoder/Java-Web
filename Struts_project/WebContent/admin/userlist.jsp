@@ -12,7 +12,7 @@
 	<head>
 		<base href="<%=basePath%>">
 
-		<title>My JSP 'itemlist.jsp' starting page</title>
+		<title>用户列表</title>
 
 		<meta http-equiv="pragma" content="no-cache">
 		<meta http-equiv="cache-control" content="no-cache">
@@ -56,6 +56,8 @@ body {
 	<body>
 		<table width="100%" border="0" align="center" cellpadding="0"
 			cellspacing="0">
+			
+			<!-- 显示的图片 索引 -->
 			<tr>
 				<td height="30px" width="100%">
 					<table width="100%" border="0" align="center" cellpadding="0"
@@ -79,6 +81,7 @@ body {
 				</td>
 			</tr>
 
+			<!-- 添加用户 列表 -->
 			<tr>
 				<td>
 					<table width="100%" border="0" cellpadding="0" cellspacing="1"
@@ -91,8 +94,9 @@ body {
 									</s:a>
 								</div>
 							</td>
-						
 						</tr>
+						
+						<!-- 列表头 -->
 						<tr>
 							<td bgcolor="d3eaef" align="center">
 								<div class="style2">
@@ -116,11 +120,13 @@ body {
 								</div>
 							</td>
 						</tr>
+						
 						<%
 							
 							int num = 1;
 						%>
 
+						<!-- 循环获取用户 -->
 						<s:iterator var="user" value="#request.userlist">
 						
 								<tr>
@@ -140,11 +146,16 @@ body {
 									</td>
 									<td bgcolor="#ffffff" align="center">
 										<div class="style3">
+										
+											<!-- 尝试另一种写法 -->
+											<!--  
 											<s:a action="useraction" method="delUser">
 												删除
 												<s:param name="id">${user.id}</s:param>
-												
 											</s:a>
+											-->
+											<a href="${pageContext.request.contextPath}/useraction!delUser?id=${user.id}">删除</a>
+											
 										</div>
 									</td>
 								</tr>
