@@ -24,6 +24,7 @@
 	</resultMap>
 
 
+	<!--嵌套查询  -->
 	<select id="getClass2" parameterType="int" resultMap="ClassResultMap2">
 		select * from class where c_id=#{id}
 	</select>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.test6.classMapper">
+
+	<!--根据classId 查询对应的班级信息,包括学生,老师 -->
+
+	<select id="getClass" parameterType="int" resultMap="ClassResultMap3">
+		select *
+		from class c, teacher t,student s where c.teacher_id=t.t_id and
+		c.c_id=s.class_id and
+		c.c_id=#{id}
+	</select>
+
+	<resultMap type="mybatis.bean.Class" id="ClassResultMap3">
+		<id property="id" column="c_id" />
+		<result property="name" column="c_name" />
+		<association property="teacher" column="teacher_id"
+			javaType="mybatis.bean.Teacher">
+			<id property="id" column="t_id" />
+			<result property="name" column="t_name" />
+		</association>
+		<!-- ofType 指定students 集合中的对象类型 -->
+		<collection property="students" ofType="mybatis.bean.Student">
+			<id property="id" column="s_id" />
+			<result property="name" column="s_name" />
+		</collection>
+	</resultMap>
+
+
+
+	<select id="getClass4" parameterType="int" resultMap="ClassResultMap4">
+		select * from class where c_id=#{id}
+	</select>
+	<resultMap type="mybatis.bean.Class" id="ClassResultMap4">
+		<id property="id" column="c_id" />
+		<result property="name" column="c_name" />
+		<association property="teacher" column="teacher_id" javaType="mybatis.bean.Teacher" select="getTeacher2">
+		</association>
+		<collection property="students" ofType="mybatis.bean.Student" column="c_id" select="getStudent">
+		</collection>
+	</resultMap>
+	<select id="getTeacher2" parameterType="int" resultType="mybatis.bean.Teacher">
+		SELECT t_id id, t_name name FROM teacher WHERE t_id=#{id}
+	</select>
+	<select id="getStudent" parameterType="int" resultType="mybatis.bean.Student">
+		SELECT s_id id, s_name name FROM student WHERE class_id=#{id}
+	</select>
+
+</mapper>

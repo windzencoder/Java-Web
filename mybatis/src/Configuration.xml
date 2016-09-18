@@ -31,8 +31,10 @@
 	<mappers>
 		<mapper resource="mybatis/test1/userMapper.xml" />
 		<mapper resource="mybatis/test2/userMapper.xml" />
+		<mapper resource="mybatis/test7/userMapper.xml" />
 		<mapper resource="mybatis/test4/orderMapper.xml" />
 		<mapper resource="mybatis/test5/classMapper.xml" />
+		<mapper resource="mybatis/test6/classMapper.xml" />
 		<mapper class="mybatis.test3.UserMapper" />
 		
 	</mappers>
