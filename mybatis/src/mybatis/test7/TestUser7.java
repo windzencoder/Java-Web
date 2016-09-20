@@ -34,7 +34,6 @@ public class TestUser7 {
 	public void testQuery() {
 		
 		ConditionUser param = new ConditionUser("%null%", 13, 18);
-		
 		List<mybatis.bean.User> users = session.selectList("mybatis.test7.userMapper.getUser", param);
 		for (mybatis.bean.User user : users) {
 			System.out.println(user);

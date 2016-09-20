@@ -15,7 +15,10 @@ public class ContextListener implements ServletContextListener {
 	}	
 
 	public void contextInitialized(ServletContextEvent event) {
+		//取出商品的类别 保存在application中
 		event.getServletContext().setAttribute("categorys",categoryImpl.queryCategory(""));
+		//启动时查询出最多4个热点类别
+		
 	}
 
 }

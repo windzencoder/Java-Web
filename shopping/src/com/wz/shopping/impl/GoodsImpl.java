@@ -21,8 +21,8 @@ public class GoodsImpl implements IGoods{
 		connection = new DBConn().getConnection();
 
 		PreparedStatement ps = null;
-		String sql = "insert into goods(gname, gprice, gpic, gremark, gxremark, gdate, giscommend, gisopen, cid) " 
-						+"values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into goods(gname, gprice, gpic, gremark, gxremark, giscommend, gisopen, cid) " 
+						+"values(?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			ps = connection.prepareStatement(sql);
 			ps.setString(1, goods.getGname());
@@ -31,12 +31,12 @@ public class GoodsImpl implements IGoods{
 			
 			ps.setString(4, goods.getGremark());
 			ps.setString(5, goods.getGxremark());
-			//日期处理
-			ps.setDate(6, new java.sql.Date(goods.getGdate().getTime()));
+			//日期处理 暂时先不处理
+			//ps.setDate(6, new java.sql.Date(goods.getGdate().getTime()));
 			
-			ps.setBoolean(7, goods.isGiscommend());
-			ps.setBoolean(8, goods.isGisopen());
-			ps.setInt(9, goods.getCid());
+			ps.setBoolean(6, goods.isGiscommend());
+			ps.setBoolean(7, goods.isGisopen());
+			ps.setInt(8, goods.getCid());
 			
 		
 			//更新

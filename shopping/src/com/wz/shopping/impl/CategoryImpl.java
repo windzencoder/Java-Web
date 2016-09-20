@@ -91,5 +91,11 @@ public class CategoryImpl implements ICategory{
 		return categories.size() == 0 ? null : categories;
 	}
 	
+	//查询热点类别
+	@Override
+	public List<Integer> queryChotCategory() {
+		return null;
+	}
+	
 	
 }

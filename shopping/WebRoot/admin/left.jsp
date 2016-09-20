@@ -13,6 +13,7 @@
 	<ul>
 		<li><a href="<%=basePath %>/admin/saveCategory.jsp" target="right">添加类别</a></li>
 		<li><a href="<%=basePath %>/admin/queryCategory.jsp" target="right">查询类别</a></li>
+		<li><a href="<%=basePath %>/admin/saveGoods.jsp" target="right">添加商品</a></li>
 	</ul>
 </body>
 </html>

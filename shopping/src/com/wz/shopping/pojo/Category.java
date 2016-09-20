@@ -7,6 +7,7 @@ public class Category {
 
 	private int cid;
 	private String ctype;
+	//是否为热点 热点类别会显示首页
 	private boolean chot;
 	private Account account;
 	
