@@ -23,6 +23,7 @@ public class Goods {
 	//商品所属类别
 	private int cid;
 	
+	private Category category;
 	
 	public int getGid() {
 		return gid;
@@ -65,6 +66,13 @@ public class Goods {
 	}
 	public void setGdate(Date gdate) {
 		this.gdate = gdate;
+	}
+	
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 	public boolean isGiscommend() {
 		return giscommend;

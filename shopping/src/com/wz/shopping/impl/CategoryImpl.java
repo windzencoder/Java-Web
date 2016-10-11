@@ -93,8 +93,41 @@ public class CategoryImpl implements ICategory{
 	
 	//查询热点类别
 	@Override
-	public List<Integer> queryChotCategory() {
-		return null;
+	public List<Category> queryCategory(boolean isHot) {
+		Connection connection = null;
+		connection = new DBConn().getConnection();
+
+		PreparedStatement ps = null;
+		String sql = "select * from category where chot=?";
+		
+		List<Category> categories = new ArrayList<>();
+		
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setBoolean(1, isHot);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()){
+				Category category = new Category();
+				category.setCid(rs.getInt("cid"));
+				category.setCtype(rs.getString("ctype"));
+				category.setChot(rs.getBoolean("chot"));
+				
+
+				categories.add(category);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			//关闭connection
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return categories.size() == 0 ? null : categories;
 	}
 	
 	

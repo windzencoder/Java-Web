@@ -15,7 +15,7 @@ public interface ICategory {
 	//查询类别
 	public List<Category> queryCategory(String ctype);
 	
-	//查询热点类别 最多4个
-	public List<Integer> queryChotCategory();
+	//查询热点类别 最多4个 isHot是否是热点类别
+	public List<Category> queryCategory(boolean isHot);
 	
 }

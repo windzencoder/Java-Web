@@ -36,6 +36,10 @@ public class CategorySer extends HttpServlet {
 			
 			//插入数据
 			categoryImpl.saveCategory(category);
+			
+			//即时更新 保存类别后 更新保存在application中的数据
+			this.getServletContext().setAttribute("categorys", categoryImpl.queryCategory(""));
+			
 			//跳转
 			resp.sendRedirect(req.getContextPath()+"/admin/main.jsp");
 			

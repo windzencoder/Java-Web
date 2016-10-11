@@ -2,10 +2,14 @@ package com.wz.shopping.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
+import com.sun.org.apache.bcel.internal.generic.RETURN;
 import com.wz.shopping.dao.IGoods;
+import com.wz.shopping.pojo.Category;
 import com.wz.shopping.pojo.Goods;
 import com.wz.shopping.util.DBConn;
 
@@ -57,11 +61,64 @@ public class GoodsImpl implements IGoods{
 		}
 	}
 
-	@Override
-	public List<Goods> queryGoods(String gname) {
-		return null;
-	}
 
+	//查询推荐的商品
+	@Override
+	public List<Goods> queryGiscommandGoods(int cid) {
+		Connection connection = null;
+		connection = new DBConn().getConnection();
+
+		PreparedStatement ps = null;
+		//布尔值不用加单引号
+		String sql = "select * from goods g inner join category c on g.cid=c.cid where g.giscommend=true and g.gisopen=true and g.cid=? order by gdate desc";
+		
+		List<Goods> goodsList = new ArrayList<>();
+		ResultSet rs = null;
+		
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setInt(1, cid);
+			rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				Goods goods = new Goods();
+				goods.setGid(rs.getInt("gid"));
+				goods.setGname(rs.getString("gname"));
+				goods.setGprice(rs.getDouble("gprice"));
+				goods.setGpic(rs.getString("gpic"));
+				goods.setGdate(rs.getDate("gdate"));
+				goods.setGiscommend(rs.getBoolean("giscommend"));
+				goods.setGisopen(rs.getBoolean("gisopen"));
+				goods.setGremark(rs.getString("gremark"));
+				goods.setGxremark(rs.getString("gxremark"));
+				
+				//类别
+				Category category = new Category();
+				category.setCid(rs.getInt("cid"));
+				category.setCtype(rs.getString("ctype"));
+				category.setChot(rs.getBoolean("chot"));
+				
+				goods.setCategory(category);
+				
+				
+				goodsList.add(goods);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			//关闭connection
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return goodsList;
+	}
 	
 	
 }

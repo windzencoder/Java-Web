@@ -7,12 +7,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>管理员登录</title>
+<title>用户登录</title>
 </head>
 <body>
-	<form action="<%=basePath %>/AccountSer" method="post">
-		登录名：<input name="alogin"  type="text" /></br>
-		密码：<input name="apass"  type="password" /></br>
+	<form action="<%=basePath %>/UsersSer" method="post">
+		登录名：<input name="ulogin"  type="text" /></br>
+		密码：<input name="upass"  type="password" /></br>
 		${error}</br>
 		<input  type="submit" value="提交"/>
 		<input  type="hidden" name="status" value="login"/>

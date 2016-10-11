@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>shopping_servlet</display-name>
-  
-  <!-- 监听器  -->
   <listener>
-  	<listener-class>com.wz.shopping.util.ContextListener</listener-class>
+    <listener-class>com.wz.shopping.util.ContextListener</listener-class>
   </listener>
-  
-  <!-- 过滤器 -->
   <filter>
     <filter-name>enCodingFilter</filter-name>
     <filter-class>com.wz.shopping.filter.EnCodingFilter</filter-class>
@@ -24,7 +20,21 @@
     <filter-name>adminFilter</filter-name>
     <url-pattern>/admin/*</url-pattern>
   </filter-mapping>
-  <!-- 错误页面 -->
+  
+  <!-- 过滤用户 -->
+  <filter>
+    <filter-name>usersFilter</filter-name>
+    <filter-class>com.wz.shopping.filter.UsersFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>usersFilter</filter-name>
+    <url-pattern>/users/*</url-pattern>
+  </filter-mapping>
+    <filter-mapping>
+    <filter-name>usersFilter</filter-name>
+    <url-pattern>/ForderSer</url-pattern>
+  </filter-mapping>
+  
   <error-page>
     <error-code>404</error-code>
     <location>/error.jsp</location>
