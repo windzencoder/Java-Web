@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-10-17 16:48:22 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.wz.entity.User" table="USER">
+        <id name="id" type="int">
+        		<!-- precision表示数组的有效位，scale表示小数点右边的位数 -->
+            <column name="ID" precision="22" scale="0" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" length="100" not-null="false" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="PASSWORD" length="100" not-null="false" />
+        </property>
+        <property name="type" type="java.lang.String">
+            <column name="TYPE" length="500" not-null="false" />
+        </property>
+    </class>
+</hibernate-mapping>

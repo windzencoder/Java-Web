@@ -1,0 +1,31 @@
+<!DOCTYPE struts PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+          "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<package name="default" extends="struts-default">
+
+	</package>
+
+	<package name="user" extends="default" namespace="/user">
+		<action name="login" class="loginAction">
+			<result name="success">/success.jsp</result>
+			<result name="failer">/error.jsp</result>
+		</action>
+		<action name="userquery" class="userQueryAction">
+			<result name="success">/query.jsp</result>
+		</action>
+		<action name="adduser" class="userAction">
+			<result name="success" type="redirect">/user/userquery.action</result>
+		</action>
+		<action name="deleteuser" class="userDeleteAction">
+			<result name="success" type="redirect">/user/userquery.action</result>
+		</action>
+		<action name="updateuser" class="userUpdateAction">
+			<result name="success" type="redirect">/user/userquery.action</result>
+			<result name="input" >/update.jsp</result>
+		</action>
+	</package>
+
+
+</struts>
