@@ -6,6 +6,11 @@ import java.io.File;
 import service.interfaces.*;
 import entity.*;
 
+/**
+ * 注册Action
+ * @author Miller
+ *
+ */
 public class RegisterAction extends BaseAction implements ModelDriven<User>
 {
 	private User user = new User();
@@ -28,7 +33,7 @@ public class RegisterAction extends BaseAction implements ModelDriven<User>
 		{
 			if (user.getValidationCode() != null)
 			{				
-				this.addFieldError("validationCode", "��֤���������!");
+				this.addFieldError("validationCode", "��֤���������!");
 			}
 		}
 	}
@@ -41,9 +46,11 @@ public class RegisterAction extends BaseAction implements ModelDriven<User>
 
 			userService.addUser(user);
             File dir = new File(userInfo.getRoot() + user.getUser());
-            if(!dir.exists())
+            //建立新用户对应的本地硬盘目录，用于保存上传后的文件
+            if(!dir.exists()){
                 dir.mkdir();
-			result = "<" + user.getUser() + ">ע��ɹ���";
+            }
+			result = "<" + user.getUser() + ">注册成功！";
 			return SUCCESS;
 		}
 		catch (Exception e)

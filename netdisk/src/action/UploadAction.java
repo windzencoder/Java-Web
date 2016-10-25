@@ -23,7 +23,7 @@ public class UploadAction extends BaseAction implements ModelDriven<UploadFile>
 		{
 			uploadFile.setUserInfo(userInfo);
 			FileService fileService = serviceManager.getFileService();
-			fileService.addFile(uploadFile);
+			fileService.addFiles(uploadFile);
 			return SUCCESS;
 		}
 		catch (Exception e)

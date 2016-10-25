@@ -4,36 +4,25 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
-	<!-- 配置数据源 -->
-	<!-- 导入资源文件 -->
-	<!-- <context:property-placeholder location="classpath:db.properties" /> -->
 
-	<bean id="propertyConfigurer"
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="locations">
-			<list>
-				<value>classpath:db.properties</value>
-				<value>/WEB-INF/netdisk.properties</value>
-			</list>
-		</property>
-	</bean>
+	<!-- 引入外部的属性文件 -->
+	<context:property-placeholder location="classpath:db.properties" order="1" ignore-unresolvable="true"/>
+	<!-- 网络硬盘的根目录 -->
+	<context:property-placeholder location="/WEB-INF/netdisk.properties" order="2" ignore-unresolvable="true"/>
 
+
+	<!-- 配置连接池 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="user" value="${user}"></property>
-		<property name="password" value="${password}"></property>
-		<property name="jdbcUrl" value="${jdbcUrl}"></property>
-		<property name="driverClass" value="${driverClass}"></property>
-		<property name="initialPoolSize" value="${initPoolSize}"></property>
-		<property name="maxPoolSize" value="${maxPoolSize}"></property>
+	    <property name="driverClass" value="${driverClass}"></property>
+	    <property name="jdbcUrl" value="${jdbcUrl}"></property>
+	    <property name="user" value="${username}"></property>
+	    <property name="password" value="${password}"></property>
 	</bean>
-
-
 
 	<!-- 指定Hibernate的配置文件 -->
-	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
-		<property name="dataSource" ref="dataSource"></property>
+		<property name="dataSource" ref="dataSource" />
 	</bean>
 
 	<!-- 装配HibernateTemplate对象 -->
@@ -42,15 +31,14 @@
 	</bean>
 
 	<!-- 装配事务管理对象 -->
-	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 
 	<!-- 装配事务拦截器 -->
-	<bean id="transactionInterceptor"
-		class="org.springframework.transaction.interceptor.TransactionInterceptor">
+	<bean id="transactionInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor">
 		<property name="transactionManager" ref="transactionManager"></property>
+		<!-- 设置事务属性 -->
 		<property name="transactionAttributes">
 			<props>
 				<prop key="get*">PROPAGATION_REQUIRED, readOnly</prop>
@@ -61,8 +49,9 @@
 	</bean>
 
 
-	<bean
-		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+	<!-- 通过Bean名自动代理数据访问层对象 -->
+	<bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<!-- 指定需要代码类的是实现接口 -->
 		<property name="beanNames">
 			<list>
 				<value>userDAO</value>
@@ -77,8 +66,7 @@
 		</property>
 	</bean>
 
-
-
+	<!-- 装配数据访问层类 -->
 	<bean id="userDAO" class="dao.UserDAOImpl">
 		<constructor-arg>
 			<ref bean="hibernateTemplate" />
@@ -95,6 +83,7 @@
 		</constructor-arg>
 	</bean>
 
+	<!-- 装配业务逻辑层的类  -->
 	<bean id="userService" class="service.UserServiceImpl">
 		<constructor-arg>
 			<ref bean="userDAO" />
@@ -125,14 +114,9 @@
 		</property>
 	</bean>
 
-	<!-- 属性文件 -->
-<!-- 	<bean
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="location">
-			<value>/WEB-INF/netdisk.properties</value>
-		</property>
-	</bean> -->
 
+
+	<!--  装配UserInfo类-->
 	<bean id="userInfo" class="common.UserInfo" scope="prototype">
 		<property name="root" value="${disk.root}" />
 	</bean>

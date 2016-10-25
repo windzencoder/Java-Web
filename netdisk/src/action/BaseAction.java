@@ -13,10 +13,15 @@ import com.sun.javafx.collections.MappingChange.Map;
 import common.UserInfo;
 import service.ServiceManager;
 
+/*
+ * 基础动作类
+ */
 public class BaseAction extends ActionSupport implements ServletRequestAware, ServletResponseAware {
 
 	protected ServiceManager serviceManager;
+	//封装UserInfo对象的属性
 	protected UserInfo userInfo;
+	//封装处理结果属性
 	protected String result;
 	protected Map<String, String> cookies;
 	protected HttpServletRequest request;
@@ -30,10 +35,12 @@ public class BaseAction extends ActionSupport implements ServletRequestAware, Se
 	@Override
 	public void setServletRequest(HttpServletRequest request) {
 		this.request = request;
+		//给UserInfo对象的cookieUser和userRoot属性赋值
 		userInfo.setCookieUser(getCookieValue("user"));
 		userInfo.setUserRoot(userInfo.getRoot() + userInfo.getCookieUser());
 	}
 
+	//返回一个指定的Cookie值
 	protected String getCookieValue(String name) {
 		Cookie cookies[] = request.getCookies();
 		if (cookies != null) {

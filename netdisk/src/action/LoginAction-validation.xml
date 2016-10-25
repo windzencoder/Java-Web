@@ -2,7 +2,7 @@
 <!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
 "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
 <validators>
-	<validator type="requiredstring">
+<!-- 	<validator type="requiredstring">
 		<param name="fieldName">user</param>
 		<message>用户名必须输入</message>
 	</validator>
@@ -13,6 +13,6 @@
 	<validator type="requiredstring">
 		<param name="fieldName">validationCode</param>
 		<message>验证码必须输入</message>
-	</validator>
+	</validator> -->
 
 </validators>

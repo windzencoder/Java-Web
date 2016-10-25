@@ -4,6 +4,11 @@ import dao.interfaces.UserDAO;
 import entity.User;
 import service.interfaces.UserService;
 
+/**
+ * 用户相关的业务处理类
+ * @author Miller
+ *
+ */
 public class UserServiceImpl implements UserService{
 
 	private UserDAO userDAO;
@@ -13,6 +18,7 @@ public class UserServiceImpl implements UserService{
 		this.userDAO = userDAO;
 	}
 	
+	//向数据库中添加注册用户
 	@Override
 	public void addUser(User user) throws Exception {
 		if (userDAO.exists(user)) {
@@ -22,6 +28,7 @@ public class UserServiceImpl implements UserService{
 		}
 	}
 	
+	//检验登录用户是否合法
 	@Override
 	public boolean verifyUser(User user) {
 		String passwordMD5 = userDAO.getPasswordMD5(user);

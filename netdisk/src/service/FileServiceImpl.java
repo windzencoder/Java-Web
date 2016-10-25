@@ -55,7 +55,7 @@ public class FileServiceImpl implements FileService {
 	}
 
 	@Override
-	public void addFile(UploadFile uploadFile) throws Exception {
+	public void addFiles(UploadFile uploadFile) throws Exception {
 		int i = 0;
 		//扫描上传的文件，并逐个处理这些文件
 		for(java.io.File f : uploadFile.getUpload()){

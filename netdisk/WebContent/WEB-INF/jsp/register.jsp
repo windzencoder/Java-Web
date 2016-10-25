@@ -1,10 +1,14 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib uri="/struts-dojo-tags" prefix="sd" %>
+
 <html>
 	<head>
 		<title>用户注册</title>
 		<link type="text/css" rel="stylesheet" href="css/style.css" />
-		<s:head theme="ajax" />
+		<%-- <s:head theme="ajax" /> --%>
+		<s:head theme="xhtml"/>
+		<sd:head parseContent="true"/>
 		<script type="text/javascript">
         function refresh()
         {

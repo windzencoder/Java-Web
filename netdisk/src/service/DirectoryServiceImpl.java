@@ -56,7 +56,7 @@ public class DirectoryServiceImpl implements DirectoryService{
 		directoryDAO.delete(userInfo, path);
 		//删除t_files表中在指定目录下的文件信息
 		fileDAO.deleteFiles(userInfo, path);
-		//删除本地硬盘中的相应问价和目录信息
+		//删除本地硬盘中的相应文件和目录信息
 		common.MyFile.deleteAny(userInfo.getAbsolutePath(path));
 		
 	}

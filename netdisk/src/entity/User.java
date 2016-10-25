@@ -1,7 +1,7 @@
 package entity;
 
 /**
- * 用户实体Bean
+ * 用户实体Bean 而且作为struts2的模型类
  * @author Miller
  *	password表示用户输入的密码字符串，未加密
  *	repassword表示用户重新输入的密码，可以通过password属性和repassword校验两次输入的是否一致

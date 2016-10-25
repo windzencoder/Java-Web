@@ -2,6 +2,8 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2016-8-24 15:40:23 by Hibernate Tools 3.5.0.Final -->
+
+<!-- 映射的是存储过程 -->
 <hibernate-mapping>
     <class name="entity.DirInfo">
     		<!-- 将path属性映射成主键 -->

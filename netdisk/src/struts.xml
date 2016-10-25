@@ -23,10 +23,12 @@
 			<result name="error">/WEB-INF/jsp/result_json.jsp</result>
 			<result name="login" type="redirectAction">login_page</result>
 		</global-results>
+		<!-- 注册 -->
 		<action name="register" class="action.RegisterAction">
 			<result name="success">/WEB-INF/jsp/result.jsp</result>
 			<result name="input" >/WEB-INF/jsp/register.jsp</result>
 		</action>
+		<!-- 登录 -->
 		<action name="login" class="action.LoginAction" >
 			<result name="success" type="redirect">main_page.action</result>
 			<result name="input">/WEB-INF/jsp/login.jsp</result>
@@ -58,6 +60,7 @@
 
 		<action name="validate_code"
 			class="action.ValidationCodeAction" />
+		<!-- 通用 -->
 		<action name="*_page">
 			<result>/WEB-INF/jsp/{1}.jsp</result>
 		</action>
