@@ -36,7 +36,7 @@
 		<mapper resource="mybatis/test5/classMapper.xml" />
 		<mapper resource="mybatis/test6/classMapper.xml" />
 		<mapper class="mybatis.test3.UserMapper" />
-		
+		<mapper resource="mapper/OrdersCustomMapper.xml" />
 	</mappers>
 
 </configuration>

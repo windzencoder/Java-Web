@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.OrdersCustomMapper">
+
+	<select id="findOrdersUser" resultType="mapper.OrdersCustom">
+		SELECT t1.*,
+		t2.username,
+		t2.sex,
+		t2.address
+		FROM
+		t_orders t1,
+		t_user t2
+		WHERE t1.user_id=t2.id
+	</select>
+	
+	<resultMap type="mapper.Orders" id="OrdersUserResultMap">
+		<id column="id" property="id" />
+		<result column="user_id" property="userid" />
+		<result column="number" property="number" />
+		<result column="createtime" property="createTime" />
+		<result column="note" property="note" />
+		
+		<association property="user" javaType="mapper.User">
+			<id column="user_id" property="id"/>
+			<result column="username" property="username" />
+			<result column="sex" property="sex" />
+			<result column="address" property="address" />
+		</association>
+		
+	</resultMap>
+	
+	<!-- 查询订单，关联查询用户信息,使用resultMap实现 -->
+    <select id="findOrdersUserResultMap" resultMap="OrdersUserResultMap">
+            SELECT t1.*,
+                t2.username,
+                t2.sex,
+                t2.address
+            FROM
+                t_orders t1,
+                t_user t2
+            WHERE t1.user_id=t2.id
+    </select>
+    
+    <!-- 查询订单关联查询用户及订单明细 -->
+    <select id="findOrdersAndOrderDetailResultMap" resultMap="ordersAndOrderDetailResultMap">
+            SELECT 
+                  t1.*,
+                  t2.username,
+                  t2.sex,
+                  t2.address,
+                  t3.id orderdetail_id,
+                  t3.items_id,
+                  t3.items_num,
+                  t3.orders_id
+            FROM
+                  t_orders t1,
+                  t_user t2,
+                 t_orderdetail t3
+            WHERE t1.user_id = t2.id AND t3.orders_id=t1.id
+    </select>
+    
+    <!-- 查询订单(关联用户)及订单明细的resultMap -->
+    <resultMap type="mapper.Orders" id="ordersAndOrderDetailResultMap" extends="OrdersUserResultMap">
+        <!-- 订单信息 -->
+        <!-- 关联用户信息 -->
+        <!-- 使用extends继承，不用在中配置订单信息和用户信息的映射-->
+        
+        <!-- 关联订单明细信息 
+            一个订单关联查询出了多条订单明细,要使用collection映射
+            collection:对关联查询到的多条记录映射到集合中
+            property:将关联查询到的多条记录映射到orders类的那个属性
+            ofType:指定映射的集合属性中pojo的类型
+        -->
+        <collection property="orderdetails" ofType="mapper.OrderDetail">
+            <!-- id:唯一标识
+                 property：要将订单明细的唯一标识映射到com.mybatis.entity.OrderDetail的那个属性
+             -->
+            <id column="orderdetail_id" property="id"/>
+            <result column="items_id" property="itemsId"/>
+            <result column="items_num" property="itemsNum"/>
+            <result column="orders_id" property="ordersId"/>
+        </collection>
+    </resultMap>
+	
+
+</mapper>

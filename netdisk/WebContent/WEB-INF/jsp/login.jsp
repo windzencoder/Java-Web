@@ -1,6 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<%@ taglib uri="/struts-dojo-tags" prefix="sd" %>
 <html>
 	<head>
 		<link type="text/css" rel="stylesheet" href="css/style.css" />

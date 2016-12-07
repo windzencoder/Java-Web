@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 映射数据库的admin表 -->
+    <class name="com.model.Admin" table="admin" catalog="se">
+    	<!-- 映射id字段 -->
+        <id name="id" type="java.lang.Integer">
+        		<!-- 采用底层数据库本身提供的主键生成机制 -->
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <!-- 映射name字段 -->
+        <property name="name" type="java.lang.String">
+            <column name="name" length="45" not-null="true" />
+        </property>
+        <!-- 映射pwd字段 -->
+        <property name="pwd" type="java.lang.String">
+            <column name="pwd" length="45" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

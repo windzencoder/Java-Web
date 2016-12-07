@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 映射ppt表 -->
+    <class name="com.model.Ppt" table="ppt" catalog="se">
+    	<!-- 映射id属性 -->
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <!-- 映射path属性 -->
+        <property name="path" type="java.lang.String">
+            <column name="path" length="100" not-null="true" />
+        </property>
+        <!-- 映射name属性 -->
+        <property name="name" type="java.lang.String">
+            <column name="name" length="50" not-null="true" />
+        </property>
+        <!-- 映射date属性 -->
+        <property name="date" type="java.lang.String">
+            <column name="date" length="45" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
